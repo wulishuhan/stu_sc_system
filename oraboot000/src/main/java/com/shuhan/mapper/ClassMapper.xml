@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuhan.mapper.ClassMapper">
+  <resultMap id="BaseResultMap" type="com.shuhan.model.Class">
+    <id column="CLNO" jdbcType="VARCHAR" property="clno" />
+    <result column="DEPT" jdbcType="VARCHAR" property="dept" />
+    <result column="GRADE" jdbcType="VARCHAR" property="grade" />
+    <result column="BRANCH" jdbcType="VARCHAR" property="branch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CLNO, DEPT, GRADE, BRANCH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.Class">
+    insert into CLASS (CLNO, DEPT, GRADE, 
+      BRANCH)
+    values (#{clno,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{branch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.Class">
+    insert into CLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        CLNO,
+      </if>
+      <if test="dept != null">
+        DEPT,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="branch != null">
+        BRANCH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        #{branch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.Class">
+    update CLASS
+    <set>
+      <if test="dept != null">
+        DEPT = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        GRADE = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        BRANCH = #{branch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.Class">
+    update CLASS
+    set DEPT = #{dept,jdbcType=VARCHAR},
+      GRADE = #{grade,jdbcType=VARCHAR},
+      BRANCH = #{branch,jdbcType=VARCHAR}
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.Class">
+    <id column="CLNO" jdbcType="VARCHAR" property="clno" />
+    <result column="DEPT" jdbcType="VARCHAR" property="dept" />
+    <result column="GRADE" jdbcType="VARCHAR" property="grade" />
+    <result column="BRANCH" jdbcType="VARCHAR" property="branch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CLNO, DEPT, GRADE, BRANCH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.Class">
+    insert into CLASS (CLNO, DEPT, GRADE, 
+      BRANCH)
+    values (#{clno,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{branch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.Class">
+    insert into CLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        CLNO,
+      </if>
+      <if test="dept != null">
+        DEPT,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="branch != null">
+        BRANCH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        #{branch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.Class">
+    update CLASS
+    <set>
+      <if test="dept != null">
+        DEPT = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        GRADE = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        BRANCH = #{branch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.Class">
+    update CLASS
+    set DEPT = #{dept,jdbcType=VARCHAR},
+      GRADE = #{grade,jdbcType=VARCHAR},
+      BRANCH = #{branch,jdbcType=VARCHAR}
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.Class">
+    <id column="CLNO" jdbcType="VARCHAR" property="clno" />
+    <result column="DEPT" jdbcType="VARCHAR" property="dept" />
+    <result column="GRADE" jdbcType="VARCHAR" property="grade" />
+    <result column="BRANCH" jdbcType="VARCHAR" property="branch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CLNO, DEPT, GRADE, BRANCH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.Class">
+    insert into CLASS (CLNO, DEPT, GRADE, 
+      BRANCH)
+    values (#{clno,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{branch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.Class">
+    insert into CLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        CLNO,
+      </if>
+      <if test="dept != null">
+        DEPT,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="branch != null">
+        BRANCH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        #{branch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.Class">
+    update CLASS
+    <set>
+      <if test="dept != null">
+        DEPT = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        GRADE = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        BRANCH = #{branch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.Class">
+    update CLASS
+    set DEPT = #{dept,jdbcType=VARCHAR},
+      GRADE = #{grade,jdbcType=VARCHAR},
+      BRANCH = #{branch,jdbcType=VARCHAR}
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.Class">
+    <id column="CLNO" jdbcType="VARCHAR" property="clno" />
+    <result column="DEPT" jdbcType="VARCHAR" property="dept" />
+    <result column="GRADE" jdbcType="VARCHAR" property="grade" />
+    <result column="BRANCH" jdbcType="VARCHAR" property="branch" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CLNO, DEPT, GRADE, BRANCH
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CLASS
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.Class">
+    insert into CLASS (CLNO, DEPT, GRADE, 
+      BRANCH)
+    values (#{clno,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{branch,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.Class">
+    insert into CLASS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        CLNO,
+      </if>
+      <if test="dept != null">
+        DEPT,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="branch != null">
+        BRANCH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null">
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        #{branch,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.Class">
+    update CLASS
+    <set>
+      <if test="dept != null">
+        DEPT = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        GRADE = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="branch != null">
+        BRANCH = #{branch,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.Class">
+    update CLASS
+    set DEPT = #{dept,jdbcType=VARCHAR},
+      GRADE = #{grade,jdbcType=VARCHAR},
+      BRANCH = #{branch,jdbcType=VARCHAR}
+    where CLNO = #{clno,jdbcType=VARCHAR}
+  </update>
+</mapper>

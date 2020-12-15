@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuhan.mapper.studentMapper">
+  <resultMap id="BaseResultMap" type="com.shuhan.model.student">
+    <id column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="AGE" jdbcType="NUMERIC" property="age" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="ENTRANCE" jdbcType="TIMESTAMP" property="entrance" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CLNO" jdbcType="VARCHAR" property="clno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SNO, NAME, AGE, SEX, ENTRANCE, ADDRESS, CLNO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.student">
+    insert into STUDENT (SNO, NAME, AGE, 
+      SEX, ENTRANCE, ADDRESS, 
+      CLNO)
+    values (#{sno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=NUMERIC}, 
+      #{sex,jdbcType=CHAR}, #{entrance,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
+      #{clno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.student">
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="entrance != null">
+        ENTRANCE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="clno != null">
+        CLNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.student">
+    update STUDENT
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        CLNO = #{clno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.student">
+    update STUDENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=NUMERIC},
+      SEX = #{sex,jdbcType=CHAR},
+      ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      CLNO = #{clno,jdbcType=VARCHAR}
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.student">
+    <id column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="AGE" jdbcType="NUMERIC" property="age" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="ENTRANCE" jdbcType="TIMESTAMP" property="entrance" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CLNO" jdbcType="VARCHAR" property="clno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SNO, NAME, AGE, SEX, ENTRANCE, ADDRESS, CLNO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.student">
+    insert into STUDENT (SNO, NAME, AGE, 
+      SEX, ENTRANCE, ADDRESS, 
+      CLNO)
+    values (#{sno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=NUMERIC}, 
+      #{sex,jdbcType=CHAR}, #{entrance,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
+      #{clno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.student">
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="entrance != null">
+        ENTRANCE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="clno != null">
+        CLNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.student">
+    update STUDENT
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        CLNO = #{clno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.student">
+    update STUDENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=NUMERIC},
+      SEX = #{sex,jdbcType=CHAR},
+      ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      CLNO = #{clno,jdbcType=VARCHAR}
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.student">
+    <id column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="AGE" jdbcType="NUMERIC" property="age" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="ENTRANCE" jdbcType="TIMESTAMP" property="entrance" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CLNO" jdbcType="VARCHAR" property="clno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SNO, NAME, AGE, SEX, ENTRANCE, ADDRESS, CLNO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.student">
+    insert into STUDENT (SNO, NAME, AGE, 
+      SEX, ENTRANCE, ADDRESS, 
+      CLNO)
+    values (#{sno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=NUMERIC}, 
+      #{sex,jdbcType=CHAR}, #{entrance,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
+      #{clno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.student">
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="entrance != null">
+        ENTRANCE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="clno != null">
+        CLNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.student">
+    update STUDENT
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        CLNO = #{clno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.student">
+    update STUDENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=NUMERIC},
+      SEX = #{sex,jdbcType=CHAR},
+      ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      CLNO = #{clno,jdbcType=VARCHAR}
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.student">
+    <id column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="AGE" jdbcType="NUMERIC" property="age" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="ENTRANCE" jdbcType="TIMESTAMP" property="entrance" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="CLNO" jdbcType="VARCHAR" property="clno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SNO, NAME, AGE, SEX, ENTRANCE, ADDRESS, CLNO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STUDENT
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.student">
+    insert into STUDENT (SNO, NAME, AGE, 
+      SEX, ENTRANCE, ADDRESS, 
+      CLNO)
+    values (#{sno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=NUMERIC}, 
+      #{sex,jdbcType=CHAR}, #{entrance,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
+      #{clno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.student">
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="age != null">
+        AGE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="entrance != null">
+        ENTRANCE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="clno != null">
+        CLNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        #{clno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.student">
+    update STUDENT
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        AGE = #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="entrance != null">
+        ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="clno != null">
+        CLNO = #{clno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.student">
+    update STUDENT
+    set NAME = #{name,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=NUMERIC},
+      SEX = #{sex,jdbcType=CHAR},
+      ENTRANCE = #{entrance,jdbcType=TIMESTAMP},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      CLNO = #{clno,jdbcType=VARCHAR}
+    where SNO = #{sno,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="findAllstudent" resultType="com.shuhan.model.student">
+        select * from student
+    </select>
+</mapper>

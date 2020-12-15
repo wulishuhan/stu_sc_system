@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var sno=document.getElementById('username').innerText;
+        var term_num=document.getElementById("term_num");
+        setInterval(function () {
+            $("#resinfos").text("");
+        },1500);
+        $("#stuinfo").click(function(){
+            $('#data').empty();
+            term_num.style.display='none'
+            $.get("stulists",function(data){
+                $('#data').append('<tr>');
+                $('#data').append('<td>学号</td>');
+                $('#data').append('<td>姓名</td>');
+                $('#data').append('<td>年龄</td>');
+                $('#data').append('<td>性别</td>');
+                $('#data').append('<td>院系</td>');
+                $('#data').append('</tr>');
+                for (let i = 0; i <data.length ; i++) {
+                    if (parseInt(sno)==parseInt(data[i].sno)){
+                    $('#data').append('<tr>');
+                    $('#data').append('<td>'+data[i].sno+'</td>');
+                    $('#data').append('<td>'+data[i].sname+'</td>');
+                    $('#data').append('<td>'+data[i].ssex+'</td>');
+                    $('#data').append('<td>'+data[i].sage+'</td>');
+                    $('#data').append('<td>'+data[i].sdept+'</td>');
+                    $('#data').append('</tr>');
+                    break;
+                    }
+                }
+            });
+        });
+
+        $("#sclistinfo").click(function () {
+            $('#data').empty();
+            term_num.style.display='none'
+            $.get("sclistinfo",function (data) {
+                $('#data').append('<tr>');
+                $('#data').append('<td>学号</td>');
+                $('#data').append('<td>姓名</td>');
+                $('#data').append('<td>课程号</td>');
+                $('#data').append('<td>课程名</td>');
+                $('#data').append('<td>学分</td>');
+                $('#data').append('<td>学期</td>');
+                $('#data').append('</tr>');
+                for (let i = 0; i <data.length ; i++) {
+                    if (parseInt(sno)==parseInt(data[i].sno)) {
+                        $('#data').append('<tr>');
+                        $('#data').append('<td>' + data[i].sno + '</td>');
+                        $('#data').append('<td>' + data[i].sname + '</td>');
+                        $('#data').append('<td>' + data[i].cno + '</td>');
+                        $('#data').append('<td>' + data[i].cname + '</td>');
+                        $('#data').append('<td>' + data[i].credit + '</td>');
+                        $('#data').append('<td>' + data[i].term + '</td>');
+                        $('#data').append('</tr>');
+                    }
+                }
+            })
+        })
+
+
+
+        $("#term_num").click(function () {
+            $('#data').empty();
+            var term=$(this).val();
+            $.get("score?term="+term,function (data) {
+                $('#data').append('<tr>');
+                $('#data').append('<td>学号</td>');
+                $('#data').append('<td>获得学分</td>');
+                $('#data').append('<td>学期</td>');
+                $('#data').append('</tr>');
+                for (let i = 0; i <data.length ; i++) {
+                    if (parseInt(sno)==parseInt(data[i].sno)){
+                    $('#data').append('<tr>');
+                    $('#data').append('<td>'+data[i].sno+'</td>');
+                    $('#data').append('<td>'+data[i].credit+'</td>');
+                    $('#data').append('<td>'+term+'</td>');
+                    $('#data').append('</tr>');
+                    }
+                }
+            })
+
+        })
+
+
+        $("#courseinfo").click(function(){
+            $('#data').empty();
+            term_num.style.display='none'
+            $.get("course",function(data){
+                $('#data').append('<tr>');
+                $('#data').append('<td>课程号</td>');
+                $('#data').append('<td>课程名</td>');
+                $('#data').append('<td>学分</td>');
+                $('#data').append('<td>是否选课</td>');
+                $('#data').append('</tr>');
+                for (let i = 0; i <data.length ; i++) {
+                    $('#data').append('<tr>');
+                    $('#data').append('<td>'+data[i].cno+'</td>');
+                    $('#data').append('<td>'+data[i].cname+'</td>');
+                    $('#data').append('<td>'+data[i].credit+'</td>');
+                    $('#data').append('<input type="radio" name="cno" value="'+data[i].cno+'"/>');
+                    $('#data').append('</tr>');
+                }
+
+            });
+            $('#data').append('<select name="term" id="term">\n' +
+                '        <option value="">选择学期</option>\n' +
+                '        <option value="1">1</option>\n' +
+                '        <option value="2">2</option>\n' +
+                '        <option value="3">3</option>\n' +
+                '        <option value="4">4</option>\n' +
+                '        <option value="5">5</option>\n' +
+                '        <option value="6">6</option>\n' +
+                '        <option value="7">7</option>\n' +
+                '        <option value="8">8</option>\n' +
+                '    </select>');
+            $('#data').append('<button onclick="resinfo()">确定</button>');
+        });
+        function resinfo() {
+            alert("111");
+        }
+        function dis(){
+            if (term_num.style.display=='none')
+                term_num.style.display='block';
+            else
+                term_num.style.display='none';
+        }
+
+        $("#scoreinfo").click(function () {
+            $('#data').empty();
+            dis();
+        })
+
+
+    });
+
+</script>
+<body>
+<p><div th:text="${session.get('username')}" id="username"></div>欢迎
+<a th:href="@{/logout}">退出登录</a></p>
+<button id="stuinfo">学生信息</button>
+<button id="scoreinfo">学分信息</button>
+<button id="courseinfo">选课信息</button>
+<button id="sclistinfo">选课详情</button>
+<iframe src="error.html" frameborder="0"></iframe>
+
+
+
+
+<form th:action="@{/insertsc}" id="insertsc">
+<table>
+    <div th:if="${resinfo}!=null" th:text="${resinfo}" id="resinfos"></div>
+    <tbody id="data">
+    <select name="term_num" id="term_num" style="display: none">
+        <option value="">选择学期</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+    </select>
+
+
+    </tbody>
+</table>
+</form>
+</body>
+</html>

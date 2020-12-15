@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuhan.mapper.courseMapper" >
+  <resultMap id="BaseResultMap" type="com.shuhan.model.course" >
+    <id column="CNO" property="cno" jdbcType="CHAR" />
+    <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+    <result column="CREDIT" property="credit" jdbcType="NUMERIC" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CNO, CNAME, CREDIT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where CNO = #{cno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from COURSE
+    where CNO = #{cno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.course" >
+    insert into COURSE (CNO, CNAME, CREDIT
+      )
+    values (#{cno,jdbcType=CHAR}, #{cname,jdbcType=VARCHAR}, #{credit,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.course" >
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cno != null" >
+        CNO,
+      </if>
+      <if test="cname != null" >
+        CNAME,
+      </if>
+      <if test="credit != null" >
+        CREDIT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cno != null" >
+        #{cno,jdbcType=CHAR},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null" >
+        #{credit,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.course" >
+    update COURSE
+    <set >
+      <if test="cname != null" >
+        CNAME = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="credit != null" >
+        CREDIT = #{credit,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where CNO = #{cno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.course" >
+    update COURSE
+    set CNAME = #{cname,jdbcType=VARCHAR},
+      CREDIT = #{credit,jdbcType=NUMERIC}
+    where CNO = #{cno,jdbcType=CHAR}
+  </update>
+
+  <select id="findallcourse" resultType="com.shuhan.model.course">
+    select cno,cname,credit from course
+  </select>
+</mapper>

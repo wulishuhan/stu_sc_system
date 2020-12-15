@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuhan.mapper.scMapper" >
+  <resultMap id="BaseResultMap" type="com.shuhan.model.sc" >
+    <id column="SNO" property="sno" jdbcType="CHAR" />
+    <id column="CNO" property="cno" jdbcType="CHAR" />
+    <result column="GRADE" property="grade" jdbcType="NUMERIC" />
+  </resultMap>
+
+<select id="findallsclistinfo" resultType="com.shuhan.model.view.sclistinfo">
+  select s.sno,s.sname,sc.cno,c.cname,c.credit,sc.term
+from student s join sc on s.sno=sc.sno join course c on sc.cno=c.cno
+</select>
+
+  <select id="findallsclist" resultType="com.shuhan.model.sc">
+  select sno,cno,grade,term
+from sc
+  </select>
+
+<!--  <select id="iscontains" resultType="int">-->
+<!--  select count(sno) from sc-->
+<!--  where sno=#{sno} and term=#{term} and cno=#{cno}-->
+<!--</select>-->
+
+  <select id="iscontains" resultType="java.lang.Integer" parameterType="com.shuhan.model.sc">
+  select count(sno) from sc
+
+--     where
+<!--    <trim  suffixOverrides="and" >-->
+<!--      <if test="sno != null" >-->
+<!--        sno=#{sno,jdbcType=CHAR} and-->
+<!--      </if>-->
+<!--      <if test="cno != null" >-->
+<!--        cno=#{cno,jdbcType=VARCHAR} and-->
+<!--      </if>-->
+<!--      <if test="term != null" >-->
+<!--        term=#{term,jdbcType=INTEGER} and-->
+<!--      </if>-->
+<!--    </trim>-->
+
+
+
+
+
+
+</select>
+
+  <insert id="insertscinfo" parameterType="com.shuhan.model.sc">
+    insert into sc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        SNO,
+      </if>
+      <if test="cno != null" >
+        cno,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="term != null" >
+        term,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        #{sno,jdbcType=CHAR},
+      </if>
+      <if test="cno != null" >
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=INTEGER},
+      </if>
+    </trim>
+
+  </insert>
+
+</mapper>

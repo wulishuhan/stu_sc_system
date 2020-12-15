@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuhan.mapper.studentMapper" >
+  <resultMap id="BaseResultMap" type="com.shuhan.model.student" >
+    <id column="SNO" property="sno" jdbcType="CHAR" />
+    <result column="SNAME" property="sname" jdbcType="VARCHAR" />
+    <result column="SAGE" property="sage" jdbcType="NUMERIC" />
+    <result column="SSEX" property="ssex" jdbcType="CHAR" />
+    <result column="SDEPT" property="sdept" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SNO, SNAME, SAGE, SSEX, SDEPT
+  </sql>
+
+<!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from STUDENT-->
+<!--    where SNO = #{sno,jdbcType=CHAR}-->
+<!--  </select>-->
+
+  <select id="selectByPrimaryKey" resultType="com.shuhan.model.student" parameterType="java.lang.String" >
+   select sno,sname,sage,ssex,sdept from student where sno=#{sno,jdbcType=CHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from STUDENT
+    where SNO = #{sno,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.student" >
+    insert into STUDENT (SNO, SNAME, SAGE, 
+      SSEX, SDEPT)
+    values (#{sno,jdbcType=CHAR}, #{sname,jdbcType=VARCHAR}, #{sage,jdbcType=NUMERIC}, 
+      #{ssex,jdbcType=CHAR}, #{sdept,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.student" >
+    insert into STUDENT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        SNO,
+      </if>
+      <if test="sname != null" >
+        SNAME,
+      </if>
+      <if test="sage != null" >
+        SAGE,
+      </if>
+      <if test="ssex != null" >
+        SSEX,
+      </if>
+      <if test="sdept != null" >
+        SDEPT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sno != null" >
+        #{sno,jdbcType=CHAR},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sage != null" >
+        #{sage,jdbcType=NUMERIC},
+      </if>
+      <if test="ssex != null" >
+        #{ssex,jdbcType=CHAR},
+      </if>
+      <if test="sdept != null" >
+        #{sdept,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.student" >
+    update STUDENT
+    <set >
+      <if test="sname != null" >
+        SNAME = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="sage != null" >
+        SAGE = #{sage,jdbcType=NUMERIC},
+      </if>
+      <if test="ssex != null" >
+        SSEX = #{ssex,jdbcType=CHAR},
+      </if>
+      <if test="sdept != null" >
+        SDEPT = #{sdept,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SNO = #{sno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.student" >
+    update STUDENT
+    set SNAME = #{sname,jdbcType=VARCHAR},
+      SAGE = #{sage,jdbcType=NUMERIC},
+      SSEX = #{ssex,jdbcType=CHAR},
+      SDEPT = #{sdept,jdbcType=VARCHAR}
+    where SNO = #{sno,jdbcType=CHAR}
+  </update>
+
+  <select id="findallstudent" resultType="com.shuhan.model.student">
+    select sno,sname,sage,ssex,sdept from student
+  </select>
+
+
+<select id="findallscore" resultType="com.shuhan.model.view.Score">
+  select sum(c.credit) credit ,s.sno
+  from student s join sc on s.sno=sc.sno join course c on sc.cno=c.cno
+  where
+  sc.term=#{term,jdbcType=INTEGER}
+  group by s.sno
+</select>
+</mapper>

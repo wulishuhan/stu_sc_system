@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuhan.mapper.courseMapper">
+  <resultMap id="BaseResultMap" type="com.shuhan.model.course">
+    <id column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CNO, NAME, SCORE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.course">
+    insert into COURSE (CNO, NAME, SCORE
+      )
+    values (#{cno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.course">
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.course">
+    update COURSE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.course">
+    update COURSE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=NUMERIC}
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.course">
+    <id column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CNO, NAME, SCORE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.course">
+    insert into COURSE (CNO, NAME, SCORE
+      )
+    values (#{cno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.course">
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.course">
+    update COURSE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.course">
+    update COURSE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=NUMERIC}
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.course">
+    <id column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CNO, NAME, SCORE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.course">
+    insert into COURSE (CNO, NAME, SCORE
+      )
+    values (#{cno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.course">
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.course">
+    update COURSE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.course">
+    update COURSE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=NUMERIC}
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.course">
+    <id column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CNO, NAME, SCORE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from COURSE
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.course">
+    insert into COURSE (CNO, NAME, SCORE
+      )
+    values (#{cno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.course">
+    insert into COURSE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.course">
+    update COURSE
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        SCORE = #{score,jdbcType=NUMERIC},
+      </if>
+    </set>
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.course">
+    update COURSE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=NUMERIC}
+    where CNO = #{cno,jdbcType=VARCHAR}
+  </update>
+</mapper>

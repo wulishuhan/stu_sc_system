@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 此文件主要用于编写sql语句
+    namespace是为了解决相同名字的sql操作问题
+ -->
+<mapper namespace="com.shuhan.mapper.CallMapper">
+    <!-- statementType 声明指向的是什么类型，其中CALLABLE是执行存储过程和函数的-->
+    <select id="queryEmp" parameterType="map" statementType="CALLABLE">
+    {
+        call pag_add(
+            #{p1,mode=IN,jdbcType=NUMERIC},
+            #{p2,mode=IN,jdbcType=NUMERIC},
+            #{p3,mode=OUT,jdbcType=NUMERIC}
+        )
+    }
+    </select>
+    <!-- 定义存储过程 -->
+    <select id="callProcedure" parameterType="map" statementType="CALLABLE" >
+      {
+         call prg_add(
+               #{p1,mode=IN,jdbcType=NUMERIC},
+               #{p2,mode=IN,jdbcType=NUMERIC},
+               #{p3,mode=OUT,jdbcType=NUMERIC}
+         )
+      }
+  </select>
+    <!-- 定义函数 -->
+    <select id="callFunction" parameterType="map" statementType="CALLABLE">
+          {
+              #{p3,mode=OUT,jdbcType=NUMERIC}=call credit_19(
+                  #{sno,mode=IN,jdbcType=CHAR},
+               #{cno,mode=IN,jdbcType=VARCHAR},
+               #{term,mode=IN,jdbcType=NUMERIC}
+              )
+          }
+  </select>
+</mapper>

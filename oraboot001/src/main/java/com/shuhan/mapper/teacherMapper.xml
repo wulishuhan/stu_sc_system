@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shuhan.mapper.teacherMapper" >
+  <resultMap id="BaseResultMap" type="com.shuhan.model.teacher" >
+    <id column="TNO" property="tno" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="NUMERIC" />
+    <result column="CNO" property="cno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TNO, NAME, AGE, CNO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TEACHER
+    where TNO = #{tno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TEACHER
+    where TNO = #{tno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.shuhan.model.teacher" >
+    insert into TEACHER (TNO, NAME, AGE, 
+      CNO)
+    values (#{tno,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=NUMERIC}, 
+      #{cno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.teacher" >
+    insert into TEACHER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tno != null" >
+        TNO,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="cno != null" >
+        CNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tno != null" >
+        #{tno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="cno != null" >
+        #{cno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shuhan.model.teacher" >
+    update TEACHER
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=NUMERIC},
+      </if>
+      <if test="cno != null" >
+        CNO = #{cno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TNO = #{tno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shuhan.model.teacher" >
+    update TEACHER
+    set NAME = #{name,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=NUMERIC},
+      CNO = #{cno,jdbcType=VARCHAR}
+    where TNO = #{tno,jdbcType=VARCHAR}
+  </update>
+</mapper>

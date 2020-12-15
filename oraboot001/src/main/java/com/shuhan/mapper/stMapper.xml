@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuhan.mapper.stMapper">
+  <resultMap id="BaseResultMap" type="com.shuhan.model.st">
+    <result column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="TNO" jdbcType="VARCHAR" property="tno" />
+    <result column="GRADE" jdbcType="NUMERIC" property="grade" />
+    <result column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shuhan.model.st">
+    insert into ST (SNO, TNO, GRADE, 
+      CNO, SCORE)
+    values (#{sno,jdbcType=VARCHAR}, #{tno,jdbcType=VARCHAR}, #{grade,jdbcType=NUMERIC}, 
+      #{cno,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.st">
+    insert into ST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="tno != null">
+        TNO,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="score != null">
+        SCORE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="tno != null">
+        #{tno,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=NUMERIC},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.shuhan.model.st">
+    <result column="SNO" jdbcType="VARCHAR" property="sno" />
+    <result column="TNO" jdbcType="VARCHAR" property="tno" />
+    <result column="GRADE" jdbcType="NUMERIC" property="grade" />
+    <result column="CNO" jdbcType="VARCHAR" property="cno" />
+    <result column="SCORE" jdbcType="NUMERIC" property="score" />
+  </resultMap>
+  <insert id="insert" parameterType="com.shuhan.model.st">
+    insert into ST (SNO, TNO, GRADE,CNO,SCORE
+      )
+    values (#{sno,jdbcType=VARCHAR}, #{tno,jdbcType=VARCHAR}, #{grade,jdbcType=NUMERIC}
+    , #{cno,jdbcType=VARCHAR}, #{score,jdbcType=NUMERIC}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shuhan.model.st">
+    insert into ST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        SNO,
+      </if>
+      <if test="tno != null">
+        TNO,
+      </if>
+      <if test="grade != null">
+        GRADE,
+      </if>
+      <if test="cno != null">
+        CNO,
+      </if>
+      <if test="score != null">
+        SCORE
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sno != null">
+        #{sno,jdbcType=VARCHAR},
+      </if>
+      <if test="tno != null">
+        #{tno,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=NUMERIC},
+      </if>
+      <if test="cno != null">
+        #{cno,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=NUMERIC}
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectAllst" parameterType="String" resultType="com.shuhan.model.st">
+    select sno,tno,grade,cno,score from st where sno=#{sno};
+  </select>
+
+
+</mapper>

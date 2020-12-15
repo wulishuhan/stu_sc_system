@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript" src="/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var sno=parseInt(document.getElementById('username').innerText);
+        var clno;
+        $.get("/stulist"+"?sno="+sno,function(data){
+            clno=data.clno;}
+        );
+
+        $("#stuinfo").click(function(){
+            $('#data').empty();
+            $.get("/stulist"+"?sno="+sno,function(data){
+            $('#data').append('<tr>');
+                $('#data').append('<td>学号</td>');
+                $('#data').append('<td>姓名</td>');
+                $('#data').append('<td>性别</td>');
+                $('#data').append('<td>年龄</td>');
+                $('#data').append('<td>入学时间</td>');
+                $('#data').append('<td>住址</td>');
+                $('#data').append('<td>班级编号</td>');
+                $('#data').append('<tr>');
+                    $('#data').append('<tr>');
+                    $('#data').append('<td>'+data.sno+'</td>');
+                    $('#data').append('<td>'+data.name+'</td>');
+                    $('#data').append('<td>'+data.age+'</td>');
+                    $('#data').append('<td>'+data.sex+'</td>');
+                    $('#data').append('<td>'+data.entrance.substr(0,10)+'</td>');
+                    $('#data').append('<td>'+data.address+'</td>');
+                    $('#data').append('<td>'+data.clno+'</td></tr>');
+            });
+        });
+
+        $("#classinfo").click(function(){
+            $('#data').empty();
+            $.get("/classlist"+"?clno="+clno,function(data){
+                $('#data').append('<tr>');
+                $('#data').append('<td>班级编号</td>');
+                $('#data').append('<td>所属学院</td>');
+                $('#data').append('<td>年级</td>');
+                $('#data').append('<td>专业</td>');
+                $('#data').append('</tr>');
+                $('#data').append('<tr>');
+                $('#data').append('<td>'+data.clno+'</td>');
+                $('#data').append('<td>'+data.dept+'</td>');
+                $('#data').append('<td>'+data.grade+'</td>');
+                $('#data').append('<td>'+data.branch+'</td>');
+                $('#data').append('</tr>');
+            });
+        });
+
+        $("#stinfo").click(function(){
+            $('#data').empty();
+            $.get("/stlist"+"?sno=",function(data){
+                $('#data').append('<tr>');
+                $('#data').append('<td>学号</td>');
+                $('#data').append('<td>教师号</td>');
+                $('#data').append('<td>课程号</td>');
+                $('#data').append('<td>成绩</td>');
+                $('#data').append('<td>学分</td>');
+                $('#data').append('</tr>');
+                $('#data').append('<tr>');
+                $('#data').append('<td>'+data.sno+'</td>');
+                $('#data').append('<td>'+data.tno+'</td>');
+                $('#data').append('<td>'+data.cno+'</td>');
+                $('#data').append('<td>'+data.grade+'</td>');
+                $('#data').append('<td>'+data.score+'</td>');
+                $('#data').append('</tr>');
+            });
+        });
+
+    });
+
+</script>
+
+<p><div th:text="${session.get('username')}" id="username"></div>欢迎
+<a th:href="@{/logout}">退出登录</a></p>
+<table>
+<tbody id="data">
+<!--<tr th:each="stu : ${stulist}">-->
+<!--    <td th:text="${stu.sno}"></td>-->
+<!--    <td th:text="${stu.name}"></td>-->
+<!--    <td th:text="${stu.sex}"></td>-->
+<!--    <td th:text="${stu.age}"></td>-->
+<!--    <td th:text="${stu.entrance}"></td>-->
+<!--    <td th:text="${stu.address}"></td>-->
+<!--    <td th:text="${stu.clno}"></td>-->
+<!--</tr>-->
+    </tbody>
+</table>
+<button id="stuinfo">学生信息</button>
+<button id="classinfo">班级信息</button>
+<button id="stinfo">选课信息</button>
+</body>
+</html>
